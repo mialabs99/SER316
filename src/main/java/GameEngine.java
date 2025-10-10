@@ -4,6 +4,7 @@ public class GameEngine {
     private int target;
     private int attempts;
     private boolean gameWon;
+    private boolean hintsEnabled;
     private boolean userQuit;
 
     public GameEngine(int min, int max) {
@@ -11,6 +12,7 @@ public class GameEngine {
         this.max = max;
         this.attempts = 0;
         this.gameWon = false;
+        this.hintsEnabled = true;
         this.userQuit = false;
         reset();
     }
@@ -44,12 +46,8 @@ public class GameEngine {
     public boolean isGameWon() {
         return gameWon;
     }
-    
-    public boolean hasUserQuit() { return userQuit; }
 
-    public boolean hasUserQuit() {
-        return userQuit;
-    }
+    public boolean hasUserQuit() { return userQuit; }
 
     public int getAttempts() {
         return attempts;
