@@ -3,9 +3,12 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         System.out.println("=== Welcome to the Number Guessing Game! ===");
+        System.out.println("Good luck!");
 
+        Scanner scanner = new Scanner(System.in);
         GameEngine engine = new GameEngine(1, 100);
         GameUI ui = new GameUI(engine, new Scanner(System.in));
+
 
         ui.start();
 
