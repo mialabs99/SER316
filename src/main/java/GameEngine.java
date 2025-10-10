@@ -5,7 +5,6 @@ public class GameEngine {
     private int attempts;
     private boolean gameWon;
     private boolean hintsEnabled;
-    private boolean userQuit;
 
     public GameEngine(int min, int max) {
         this.min = min;
@@ -13,26 +12,25 @@ public class GameEngine {
         this.attempts = 0;
         this.gameWon = false;
         this.hintsEnabled = true;
-        this.userQuit = false;
         reset();
     }
 
     public GuessResult makeGuess(int guess) {
-        // Check if user wants to quit (negative number)
-        if (guess < 0) {
-            userQuit = true;
-            return new GuessResult(false, "Exiting game...", attempts);
-        }
-
         attempts++;
 
         if (guess == target) {
             gameWon = true;
             return new GuessResult(true, "Correct! You guessed it in " + attempts + " attempts.", attempts);
-        } else if (guess < target) {
-            return new GuessResult(false, "Too low! Try a higher number.", attempts);
         } else {
-            return new GuessResult(false, "Too high! Try a lower number.", attempts);
+            String hint = getHint(guess);
+            GuessResult result;
+            if (guess < target) {
+                result = new GuessResult(false, "Too low!", attempts);
+            } else {
+                result = new GuessResult(false, "Too high!", attempts);
+            }
+            result.setHint(hint);
+            return result;
         }
     }
 
@@ -40,14 +38,11 @@ public class GameEngine {
         target = Utils.randomInt(min, max);
         attempts = 0;
         gameWon = false;
-        userQuit = false;
     }
 
     public boolean isGameWon() {
         return gameWon;
     }
-
-    public boolean hasUserQuit() { return userQuit; }
 
     public int getAttempts() {
         return attempts;
