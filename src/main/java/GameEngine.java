@@ -20,7 +20,7 @@ public class GameEngine {
         if (guess < 0) {
             userQuit = true;
             return new GuessResult(false, "Exiting game...", attempts);
-            }
+        }
 
         attempts++;
 
@@ -38,14 +38,15 @@ public class GameEngine {
         target = Utils.randomInt(min, max);
         attempts = 0;
         gameWon = false;
-    }
-
-    public boolean hasUserQuit() {
-        return userQuit;
+        userQuit = false;
     }
 
     public boolean isGameWon() {
         return gameWon;
+    }
+    
+    public boolean hasUserQuit() {
+        return userQuit;
     }
 
     public int getAttempts() {
