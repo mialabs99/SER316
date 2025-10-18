@@ -45,7 +45,7 @@ public class GameEngine {
         return gameWon;
     }
     
-    public boolean hasUserQuit() {return userQuit;}
+    public boolean hasUserQuit() { return userQuit; }
 
     public int getAttempts() {
         return attempts;
