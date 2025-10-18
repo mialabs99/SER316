@@ -7,6 +7,7 @@ public class GameEngine {
     private int attempts;
     private boolean gameWon;
     private boolean gameOver;
+    private boolean hintsEnabled;
 
     public GameEngine(int min, int max) {
         this.min = min;
