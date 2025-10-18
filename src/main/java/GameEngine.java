@@ -4,6 +4,7 @@ public class GameEngine {
     private int target;
     private int attempts;
     private boolean gameWon;
+    private boolean userQuit;
 
     public GameEngine(int min, int max) {
         this.min = min;
@@ -30,6 +31,10 @@ public class GameEngine {
         target = Utils.randomInt(min, max);
         attempts = 0;
         gameWon = false;
+    }
+
+    public boolean hasUserQuit() {
+        return userQuit;
     }
 
     public boolean isGameWon() {
